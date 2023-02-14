@@ -89,7 +89,7 @@ contract MembershipNFT {
     mapping(address => uint256) private ownerShip;
     mapping(uint256 => address) private ownerShipByTokenId;
 
-    function mint() public {
+    function getMembership() public {
         if (ownerShip[msg.sender] >= 1) revert alreadyMember();
         _tokenCount = _tokenCount + 1;
         ownerShip[msg.sender] = _tokenCount;
