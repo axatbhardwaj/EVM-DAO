@@ -92,7 +92,7 @@ contract MembershipNFT {
     function getMembership() public {
         if (ownerShip[msg.sender] >= 1) revert alreadyMember();
         _tokenCount = _tokenCount + 1;
-        ownerShip[msg.sender] = _tokenCount;
+        ownerShip[msg.sender] = _tokenCount; //mint
 
         emit Transfer(address(this), msg.sender, _tokenCount);
     }
