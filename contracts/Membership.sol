@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+// SOUL BOUND TOKEN ATTEMPT WITH ERC-721 Interface
+
 error TransferNotAllowed();
 error ApprovalNotAllowed();
 error alreadyMember();
@@ -31,21 +33,21 @@ interface ERC721 {
         address _to,
         uint256 _tokenId,
         bytes memory data
-    ) external payable;
+    ) external;
 
     function safeTransferFrom(
         address _from,
         address _to,
         uint256 _tokenId
-    ) external payable;
+    ) external;
 
     function transferFrom(
         address _from,
         address _to,
         uint256 _tokenId
-    ) external payable;
+    ) external;
 
-    function approve(address _approved, uint256 _tokenId) external payable;
+    function approve(address _approved, uint256 _tokenId) external;
 
     function setApprovalForAll(address _operator, bool _approved) external;
 
@@ -108,7 +110,7 @@ contract MembershipNFT {
         address _from,
         address _to,
         uint256 _tokenId
-    ) public payable virtual {
+    ) public virtual {
         revert TransferNotAllowed();
     }
 
@@ -118,7 +120,7 @@ contract MembershipNFT {
         address _to,
         uint256 _tokenId,
         bytes memory _data
-    ) public payable virtual {
+    ) public virtual {
         revert TransferNotAllowed();
     }
 
@@ -127,12 +129,12 @@ contract MembershipNFT {
         address _from,
         address _to,
         uint256 _tokenId
-    ) public payable virtual {
+    ) public virtual {
         revert TransferNotAllowed();
     }
 
     // this function is disabled since we don;t want to allow transfers
-    function approve(address _to, uint256 _tokenId) public payable virtual {
+    function approve(address _to, uint256 _tokenId) public virtual {
         revert TransferNotAllowed();
     }
 
