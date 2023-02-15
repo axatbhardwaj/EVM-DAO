@@ -85,11 +85,11 @@ contract MembershipNFT {
     string private _symbol;
     string private _name;
 
-    //Mappings
+    // Mappings
     mapping(address => uint256) private ownerShip;
     mapping(uint256 => address) private ownerShipByTokenId;
 
-    // function which provides/mints SBT to caller
+    // @dev function which provides/mints membership/SBT to caller
     function getMembership() public {
         if (ownerShip[msg.sender] >= 1) revert alreadyMember();
         _tokenCount = _tokenCount + 1;
@@ -98,17 +98,21 @@ contract MembershipNFT {
         emit Transfer(address(this), msg.sender, _tokenCount);
     }
 
-    //function return tokenId by owner not the Balance
+    // @dev function return tokenId by owner not the Balance
+    // @param address of any owner to view tokenID/MembershipID
     function balanceOf(address _owner) public view virtual returns (uint256) {
         return ownerShip[_owner];
     }
 
-    // function to return owner by tokenID
+    // @dev function to return owner by tokenID
+    // @param membership token id
     function ownerOf(uint256 _tokenId) public view virtual returns (address) {
         return ownerShipByTokenId[_tokenId];
     }
 
-    // this function is disabled since we don;t want to allow transfers
+    // @dev this function is disabled since we don;t want to allow transfers
+    // @param address for the receiver
+    // @param membership token id
     function safeTransferFrom(
         address _from,
         address _to,
@@ -117,7 +121,10 @@ contract MembershipNFT {
         revert TransferNotAllowed();
     }
 
-    // this function is disabled since we don;t want to allow transfers
+    // @dev this function is disabled since we don;t want to allow transfers
+    // @param address for the receiver
+    // @param membership token id
+    // @param data associated with the transfer/token
     function safeTransferFrom(
         address _from,
         address _to,
@@ -127,7 +134,9 @@ contract MembershipNFT {
         revert TransferNotAllowed();
     }
 
-    // this function is disabled since we don;t want to allow transfers
+    // @dev this function is disabled since we don;t want to allow transfers
+    // @param address for the receiver
+    // @param membership token id
     function transferFrom(
         address _from,
         address _to,
@@ -136,12 +145,14 @@ contract MembershipNFT {
         revert TransferNotAllowed();
     }
 
-    // this function is disabled since we don;t want to allow transfers
+    // @dev this function is disabled since we don;t want to allow transfers
+    // @param address for the operator
+    // @param membership token id
     function approve(address _to, uint256 _tokenId) public virtual {
         revert TransferNotAllowed();
     }
 
-    // this function is disabled since we don;t want to allow transfers
+    // @dev this function is disabled since we don;t want to allow transfers
     function setApprovalForAll(address _operator, bool _approved)
         public
         virtual
@@ -149,12 +160,13 @@ contract MembershipNFT {
         revert ApprovalNotAllowed();
     }
 
-    // this function is disabled since we don;t want to allow transfers
+    // @dev this function is disabled since we don;t want to allow transfers
+    // @param membership token id
     function getApproved(uint256 _tokenId) public view returns (address) {
         return address(0x0);
     }
 
-    // this function is disabled since we don;t want to allow transfers
+    // @dev this function is disabled since we don;t want to allow transfers
     function isApprovedForAll(address _owner, address _operator)
         public
         view
@@ -163,7 +175,8 @@ contract MembershipNFT {
         return false;
     }
 
-    // Function returns tokenuri variable as it is common for all tokens
+    // @dev Function returns tokenuri variable as it is common for all tokens
+    // @param membership token id
     function tokenURI(uint256 _tokenId)
         public
         view
@@ -174,7 +187,7 @@ contract MembershipNFT {
         return _uri;
     }
 
-    // Function returns symbol
+    // @dev Function returns symbol
     function symbol() external view returns (string memory) {
         return _symbol;
     }
@@ -183,7 +196,7 @@ contract MembershipNFT {
         return _tokenCount;
     }
 
-    // Function returns name of token
+    // @dev Function returns name of token
     function name() external view returns (string memory) {
         return _name;
     }

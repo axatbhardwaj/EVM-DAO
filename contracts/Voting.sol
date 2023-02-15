@@ -6,7 +6,7 @@ pragma solidity >=0.8.0 <0.9.0;
 A:- Membership Management;
 
     1. Create a Membership system for USERS via using SBTs;
-    2. No user will be able to use this Dao without SBTs;
+    2. No user will be able to use this Dao to propose a vote without SBTs;
 
     3. Anyvone can vote with the tokens present but can not propose 
 
