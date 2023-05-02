@@ -25,11 +25,32 @@ C:- proposal Management
 */
 error notMember(address);
 
+/*
+proposal struct 
+
+struct proposal {
+    uint256 choices ;
+    
+}
+
+*/
+
+
 contract dao is MembershipNFT {
+
+    struct vRes {
+        uint256 totalMembers;
+        uint256 membersVoted;
+
+    }
+
     address constant MembershipNFTContract = ;
     modifier checkMembership() {
         _;
     }
 
-    function createProposal  
+    function createProposal external (uint256[] arrayOFAddresses, string proposalName) returns 
+    {
+
+    }
 }
