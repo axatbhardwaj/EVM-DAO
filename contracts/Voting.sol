@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
 
+import "./Membership.sol";
+
 /* TODO :
 
 A:- Membership Management;
@@ -21,7 +23,13 @@ C:- proposal Management
     3. users should be able to create proposals as well ;
     4. a group of dao keepers/ADmins will have to approve the proposals;(5/20);
 */
+error notMember(address);
 
-contract dao {
+contract dao is MembershipNFT {
+    address constant MembershipNFTContract = ;
+    modifier checkMembership() {
+        _;
+    }
 
+    function createProposal  
 }
