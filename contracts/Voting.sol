@@ -27,10 +27,22 @@ error notMember(address);
 
 /*
 proposal struct 
+interface Imembership {
+    function balanceOf(address _owner) external view virtual returns (uint256);
+}
+error notMember();
 
 struct proposal {
+    //NOTE: change address
+    Imembership constant MembershipcontractAddress =
+        Imembership(0xADC9Cc03ff1CE5A51cA0B4ae3561bAa1fE6E49D6);
     uint256 choices ;
     
+    modifier memberShipCheck() {
+        if (MembershipcontractAddress.balanceOf(msg.sender) <= 0)
+            revert notMember();
+        _;
+    }
 }
 
 */

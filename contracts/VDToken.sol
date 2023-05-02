@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8;
 
-// @dev This contract is for and ERC-20 token which is going to serve purpose of fee transaction for using the Dao
-
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 interface Imembership {
@@ -19,9 +17,9 @@ contract Daotoken is ERC20 {
         _;
     }
 
-    constructor(address _membershipAddress)
-        ERC20("Voting Daotoken", "VDAO-TKN")
-    {
+    constructor(
+        address _membershipAddress
+    ) ERC20("Voting Daotoken", "VDAO-TKN") {
         membershipAddress = _membershipAddress;
         membershipContract = Imembership(membershipAddress);
     }
@@ -30,10 +28,10 @@ contract Daotoken is ERC20 {
         _mint(_recipient, _tokenAmount);
     }
 
-    function burn(address _tokenHolder, uint256 _tokenAmount)
-        public
-        onlyMember
-    {
+    function burn(
+        address _tokenHolder,
+        uint256 _tokenAmount
+    ) public onlyMember {
         _burn(_tokenHolder, _tokenAmount);
     }
 }

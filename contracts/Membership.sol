@@ -2,7 +2,6 @@
 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
 //Errors
 error TransferNotAllowed();
 error ApprovalNotAllowed();
@@ -71,7 +70,7 @@ interface ERC721 {
 
 /// @title Membership SBT
 /// @author axatbhardwaj
-/// @notice This gives acess to Dao
+/// @notice This SBT gives acess to Dao
 /// @dev Mint's and SBT to user's address as a proof of membership
 
 contract MembershipNFT {
