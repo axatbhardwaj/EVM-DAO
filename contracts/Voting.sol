@@ -36,15 +36,11 @@ struct proposal {
     
 }
 
-
-
-
 contract dao is MembershipNFT {
 
     struct vRes {
         uint256 totalMembers;
         uint256 membersVoted;
-
     }
 
     //NOTE: change address
