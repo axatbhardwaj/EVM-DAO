@@ -9,7 +9,6 @@ A:- Membership Management;
 
     1. Create a Membership system for USERS via using SBTs;
     2. No user will be able to use this Dao to propose a vote without SBTs;
-
     3. Anyvone can vote with the tokens present but can not propose 
 
 B:- Token management;
@@ -53,7 +52,7 @@ contract dao is MembershipNFT {
             revert notMember();
         _;
     }
-    function createProposal external (uint256[] arrayOFAddresses, string proposalName) returns 
+    function createProposal external (uint256[] arrayOFAddresses, string proposalName) returns (bool)
     {
 
     }
