@@ -10,9 +10,13 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 //The porposal will require a minimum of 10 votes to be approved
 
 error transferNotAllowed(address to, uint256 amount);
+error mintCooldown(uint256 cooldown);
+error notMember();
 
 contract Daotoken is ERC20 {
     address public godAddress;
+
+    mapping(address => uint256) public mintingLog;
 
     constructor(
         string memory name_,
@@ -21,7 +25,22 @@ contract Daotoken is ERC20 {
         godAddress = msg.sender;
     }
 
-    function mint(address _to, uint256 _amount) public {
+   //checks if the user is a member
+   modifier memberShipCheck() {
+        if (MembershipcontractAddress.balanceOf(msg.sender) <= 0)
+            revert notMember();
+        _;
+    }
+
+    //modifier for checking time of mint 
+    modifier timeCheck() {
+        if (block.timestamp < mintingLog[msg.sender] + 30 days)
+            revert mintCooldown(mintingLog[msg.sender]);
+        _;
+    }
+
+    function mint(address _to, uint256 _amount) public timeCheck {
+        mintingLog[_to] = block.timestamp;
         _mint(_to, _amount);
     }
 
